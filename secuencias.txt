@@ -1,0 +1,62 @@
+	crearArticulo
+Secuencia normal
+introduces los datos, y se crea
+Secuencia alternativa
+introducces los datos, ya existe y no se crea 
+	
+	crearCliente
+Secuencia normal
+introduces los datos, y se crea
+Secuencia alternativa
+introducces los datos, ya existe y no se crea 
+	
+	consultarArticulo
+Secuencia normal
+introducces el nombre y muestra los datos del articulo
+Secuencia alternativa
+introducces el nombre y el articulo no existe
+
+	editarArticulo
+Secuencia normal
+introducces los datos y se actualiza
+Secuencia alternativa
+introducces los datos y no se actualiza porque no existe
+
+	consultarPrecioAnterior
+Secuencia normal
+introducces los datos y da los precios actualizados y sus fechas
+Secuencia alternativa
+introducces los datos, y muestra valor 0 porque no existia el producto en esa fecha
+
+	consultarCliente
+Secuencia normal
+introduces la razon social, y se muestra
+Secuencia alternativa
+introducces los datos y no existe
+
+	borrarCliente
+Secuencia normal
+introduces los datos, y se borra
+Secuencia alternativa
+introducces los datos y  no existe
+
+	crearCliente
+Secuencia normal
+introduces los datos, y se crea
+Secuencia alternativa
+introducces los datos, ya existe y no se crea 
+
+	consultarPedido
+Secuencia normal
+introduces el cliente, se muestran los pedidos(0 o n), 
+seleccionas uno y se muestra el pedido 
+Secuencia alternativa
+introducces el cliente, el cliente falla
+
+	crearPedido
+Secuencia normal
+introduces los datos, el cliente y los articulos son correctos, y se crea
+Secuencia alternativa
+introducces los datos, ya existe y no se crea 
+ ""                                    ,no hay articulos en el mismo y no se crea
+ ""                                    , no hay cliente y no se crea
