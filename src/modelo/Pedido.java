@@ -1,50 +1,44 @@
 package modelo;
 
-import java.io.BufferedReader;
-import java.io.File;
-import java.io.FileNotFoundException;
-import java.io.FileReader;
-import java.io.IOException;
-import java.io.Serializable;
+import java.io.*;
+import java.time.LocalDate;
+import java.util.ArrayList;
 
 import utiles.Utiles;
 
-public class Pedido implements Serializable{
+public class Pedido implements Serializable {
 	private int numero;
-	private String item;
+	private Cliente cliente;
+	private ArrayList<LineaPedido> lineaPedido;
+	private LocalDate fecha;
 
-	public Pedido( String nombre) {
+	public Pedido(Cliente cliente, ArrayList<LineaPedido> lineaPedido, LocalDate fecha,int numero) {
 		super();
-		this.item = nombre;
-		ponerNumero();
+		this.cliente = cliente;
+		this.lineaPedido = lineaPedido;
+		this.fecha = fecha;
+		this.numero=numero;
 	}
 
-	private void ponerNumero() {
-		Integer num = 0;
-		String path = "./data/numeroUltimoPedido.data";
-		if(Utiles.comprobarExiste(path)){
-			num = (Integer) new DAO<>().leer(path);			
-		}
-		this.numero=num;
-		num++;
-		new DAO<>().grabar(path, num);
-	}
 
-	public int getNumero() {
-		return numero;
+	public ArrayList<LineaPedido> getLineaPedido() {
+		return lineaPedido;
 	}
 
 	public void setNumero(int numero) {
 		this.numero = numero;
 	}
 
-	public String getNombre() {
-		return item;
+	public int getNumero() {
+		return numero;
 	}
 
-	public void setNombre(String nombre) {
-		this.item = nombre;
+	public Cliente getCliente() {
+		return cliente;
+	}
 
+	public LocalDate getFecha() {
+		return fecha;
 	}
 
 	@Override
@@ -56,6 +50,5 @@ public class Pedido implements Serializable{
 		}
 		return retorno;
 	}
-
 
 }
