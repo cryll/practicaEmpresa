@@ -1,7 +1,5 @@
 package control;
 
-package control;
-
 import java.io.File;
 import java.util.Set;
 import java.util.TreeMap;
@@ -31,7 +29,7 @@ public class AccionesCliente {
 			Set keySet = indiceMap.keySet();
 			for (Object object : keySet) {
 				Cliente cliente=(Cliente) new AlmacenCliente<>().obtener(object);
-				combo.addItem(cliente.getNumero()+"-"+cliente.getNombre()+" "+cliente.getID());
+				combo.addItem(cliente.getRazonSocial()+" "+cliente.getDniCif());
 			}
 		}
 
