@@ -23,10 +23,14 @@ import javax.swing.border.MatteBorder;
 import javax.swing.border.EmptyBorder;
 import javax.swing.border.EtchedBorder;
 import javax.swing.SwingConstants;
-
+/**
+ * 
+ * @author fp-hermoso
+ *
+ */
 public class PanelPedido extends JPanel {
 	private JButton btnAdd;
-	private JButton btnCheck;
+	private JButton btnCancelar;
 	private JComboBox comboArticulos;
 	private JPanel panelTabla;
 	private JTextField txtMensaje;
@@ -38,9 +42,6 @@ public class PanelPedido extends JPanel {
 	private JComboBox comboPedidos;
 	private JComboBox comboClientes;
 	private JComboBox comboClientesCrear;
-
-
-
 
 	public PanelPedido() {
 		setForeground(Color.GRAY);
@@ -60,40 +61,42 @@ public class PanelPedido extends JPanel {
 		gbc_panelConsultarPedido.gridy = 0;
 		add(panelConsultarPedido, gbc_panelConsultarPedido);
 		GridBagLayout gbl_panelConsultarPedido = new GridBagLayout();
-		gbl_panelConsultarPedido.columnWidths = new int[]{23, 0, 77, 0, 0, 0};
-		gbl_panelConsultarPedido.rowHeights = new int[]{6, 37, 0, 26, 0, 13, 0, 0};
-		gbl_panelConsultarPedido.columnWeights = new double[]{1.0, 1.0, 1.0, 1.0, 1.0, Double.MIN_VALUE};
-		gbl_panelConsultarPedido.rowWeights = new double[]{1.0, 1.0, 1.0, 1.0, 1.0, 0.0, 1.0, Double.MIN_VALUE};
+		gbl_panelConsultarPedido.columnWidths = new int[] { 23, 0, 77, 0, 0, 0 };
+		gbl_panelConsultarPedido.rowHeights = new int[] { 6, 30, 0, 26, 0, 13, 0 };
+		gbl_panelConsultarPedido.columnWeights = new double[] { 1.0, 1.0, 1.0, 1.0, 1.0, Double.MIN_VALUE };
+		gbl_panelConsultarPedido.rowWeights = new double[] { 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, Double.MIN_VALUE };
 		panelConsultarPedido.setLayout(gbl_panelConsultarPedido);
-		
+
 		JLabel lblCrearPedido = new JLabel("Crear Pedido");
 		lblCrearPedido.setHorizontalAlignment(SwingConstants.CENTER);
 		lblCrearPedido.setFont(new Font("Tahoma", Font.PLAIN, 22));
 		GridBagConstraints gbc_lblCrearPedido = new GridBagConstraints();
+		gbc_lblCrearPedido.gridheight = 2;
 		gbc_lblCrearPedido.fill = GridBagConstraints.BOTH;
 		gbc_lblCrearPedido.gridwidth = 5;
 		gbc_lblCrearPedido.insets = new Insets(0, 0, 5, 0);
 		gbc_lblCrearPedido.gridx = 0;
-		gbc_lblCrearPedido.gridy = 1;
+		gbc_lblCrearPedido.gridy = 0;
 		panelConsultarPedido.add(lblCrearPedido, gbc_lblCrearPedido);
-		
+
 		btnNuevoPedido = new JButton("Nuevo Pedido");
+		btnNuevoPedido.setToolTipText("Iniciar nuevo pedido");
 		GridBagConstraints gbc_btnNuevoPedido = new GridBagConstraints();
 		gbc_btnNuevoPedido.fill = GridBagConstraints.BOTH;
 		gbc_btnNuevoPedido.insets = new Insets(0, 0, 5, 5);
 		gbc_btnNuevoPedido.gridx = 1;
 		gbc_btnNuevoPedido.gridy = 2;
 		panelConsultarPedido.add(btnNuevoPedido, gbc_btnNuevoPedido);
-		
+
 		btnEncargar = new JButton("Encargar");
-		btnEncargar.setEnabled(false);
+		btnEncargar.setToolTipText("Terminar de realizar el pedido y encargarlo");
 		GridBagConstraints gbc_btnEncargar = new GridBagConstraints();
 		gbc_btnEncargar.fill = GridBagConstraints.BOTH;
 		gbc_btnEncargar.insets = new Insets(0, 0, 5, 5);
 		gbc_btnEncargar.gridx = 3;
 		gbc_btnEncargar.gridy = 2;
 		panelConsultarPedido.add(btnEncargar, gbc_btnEncargar);
-		
+
 		JLabel lblN = new JLabel("n\u00BA");
 		GridBagConstraints gbc_lblN = new GridBagConstraints();
 		gbc_lblN.anchor = GridBagConstraints.EAST;
@@ -101,8 +104,9 @@ public class PanelPedido extends JPanel {
 		gbc_lblN.gridx = 0;
 		gbc_lblN.gridy = 3;
 		panelConsultarPedido.add(lblN, gbc_lblN);
-		
+
 		txtNumeroPedido = new JTextField();
+		txtNumeroPedido.setToolTipText("numero de pedido");
 		txtNumeroPedido.setEditable(false);
 		GridBagConstraints gbc_txtNumeroPedido = new GridBagConstraints();
 		gbc_txtNumeroPedido.insets = new Insets(0, 0, 5, 5);
@@ -111,25 +115,24 @@ public class PanelPedido extends JPanel {
 		gbc_txtNumeroPedido.gridy = 3;
 		panelConsultarPedido.add(txtNumeroPedido, gbc_txtNumeroPedido);
 		txtNumeroPedido.setColumns(10);
-		
+
 		JLabel lblNombrecliente = new JLabel("Cliente");
 		GridBagConstraints gbc_lblNombrecliente = new GridBagConstraints();
 		gbc_lblNombrecliente.insets = new Insets(0, 0, 5, 5);
 		gbc_lblNombrecliente.gridx = 2;
 		gbc_lblNombrecliente.gridy = 3;
 		panelConsultarPedido.add(lblNombrecliente, gbc_lblNombrecliente);
-		
+
 		comboClientesCrear = new JComboBox();
-		comboClientesCrear.setEnabled(false);
+		comboClientesCrear.setToolTipText("cliente del pedido");
 		GridBagConstraints gbc_comboClientesCrear = new GridBagConstraints();
 		gbc_comboClientesCrear.insets = new Insets(0, 0, 5, 5);
 		gbc_comboClientesCrear.fill = GridBagConstraints.HORIZONTAL;
 		gbc_comboClientesCrear.gridx = 3;
 		gbc_comboClientesCrear.gridy = 3;
 		panelConsultarPedido.add(comboClientesCrear, gbc_comboClientesCrear);
-		
+
 		btnAdd = new JButton("add");
-		btnAdd.setEnabled(false);
 
 		btnAdd.setToolTipText("a\u00F1adir articulo al pedido");
 		GridBagConstraints gbc_btnAdd = new GridBagConstraints();
@@ -138,36 +141,34 @@ public class PanelPedido extends JPanel {
 		gbc_btnAdd.gridx = 1;
 		gbc_btnAdd.gridy = 4;
 		panelConsultarPedido.add(btnAdd, gbc_btnAdd);
-		
+
 		btnDelete = new JButton("Delete");
-		btnDelete.setEnabled(false);
+		btnDelete.setToolTipText("Borra la linea seleccionada del pedido actual");
 		GridBagConstraints gbc_btnDelete = new GridBagConstraints();
 		gbc_btnDelete.fill = GridBagConstraints.BOTH;
 		gbc_btnDelete.insets = new Insets(0, 0, 5, 5);
 		gbc_btnDelete.gridx = 2;
 		gbc_btnDelete.gridy = 4;
 		panelConsultarPedido.add(btnDelete, gbc_btnDelete);
-		
-		btnCheck = new JButton("check");
-		btnCheck.setEnabled(false);
-		btnCheck.setToolTipText("checkear articulo del pedido");
-		GridBagConstraints gbc_btnCheck = new GridBagConstraints();
-		gbc_btnCheck.fill = GridBagConstraints.BOTH;
-		gbc_btnCheck.insets = new Insets(0, 0, 5, 5);
-		gbc_btnCheck.gridx = 3;
-		gbc_btnCheck.gridy = 4;
-		panelConsultarPedido.add(btnCheck, gbc_btnCheck);
-		
-		comboArticulos = new JComboBox();
-		comboArticulos.setEnabled(false);
-		comboArticulos.setToolTipText("seleccion de articulos posibles");
-		GridBagConstraints gbc_comboArticulos = new GridBagConstraints();
-		gbc_comboArticulos.gridwidth = 3;
-		gbc_comboArticulos.insets = new Insets(0, 0, 0, 5);
-		gbc_comboArticulos.fill = GridBagConstraints.BOTH;
-		gbc_comboArticulos.gridx = 1;
-		gbc_comboArticulos.gridy = 6;
-		panelConsultarPedido.add(comboArticulos, gbc_comboArticulos);
+
+		btnCancelar = new JButton("Cancelar");
+		btnCancelar.setToolTipText("cancelar el pedido que se esta realizando");
+		GridBagConstraints gbc_btnCancelar = new GridBagConstraints();
+		gbc_btnCancelar.fill = GridBagConstraints.BOTH;
+		gbc_btnCancelar.insets = new Insets(0, 0, 5, 5);
+		gbc_btnCancelar.gridx = 3;
+		gbc_btnCancelar.gridy = 4;
+		panelConsultarPedido.add(btnCancelar, gbc_btnCancelar);
+				
+						comboArticulos = new JComboBox();
+						comboArticulos.setToolTipText("seleccion de articulos posibles");
+						GridBagConstraints gbc_comboArticulos = new GridBagConstraints();
+						gbc_comboArticulos.insets = new Insets(0, 0, 0, 5);
+						gbc_comboArticulos.gridwidth = 3;
+						gbc_comboArticulos.fill = GridBagConstraints.BOTH;
+						gbc_comboArticulos.gridx = 1;
+						gbc_comboArticulos.gridy = 5;
+						panelConsultarPedido.add(comboArticulos, gbc_comboArticulos);
 
 		JPanel panelCrearPedido = new JPanel();
 		panelCrearPedido.setBorder(new EtchedBorder(EtchedBorder.LOWERED, null, null));
@@ -178,12 +179,12 @@ public class PanelPedido extends JPanel {
 		gbc_panelCrearPedido.gridy = 0;
 		add(panelCrearPedido, gbc_panelCrearPedido);
 		GridBagLayout gbl_panelCrearPedido = new GridBagLayout();
-		gbl_panelCrearPedido.columnWidths = new int[]{37, 87, 91, 0, 0};
-		gbl_panelCrearPedido.rowHeights = new int[]{0, 0, 0, 0, 0, 0, 0, 0};
-		gbl_panelCrearPedido.columnWeights = new double[]{1.0, 1.0, 1.0, 0.0, Double.MIN_VALUE};
-		gbl_panelCrearPedido.rowWeights = new double[]{1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, Double.MIN_VALUE};
+		gbl_panelCrearPedido.columnWidths = new int[] { 37, 87, 91, 0, 0 };
+		gbl_panelCrearPedido.rowHeights = new int[] { 0, 0, 0, 0, 0, 0, 0, 0 };
+		gbl_panelCrearPedido.columnWeights = new double[] { 1.0, 1.0, 1.0, 0.0, Double.MIN_VALUE };
+		gbl_panelCrearPedido.rowWeights = new double[] { 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, Double.MIN_VALUE };
 		panelCrearPedido.setLayout(gbl_panelCrearPedido);
-		
+
 		JLabel lblConsultarPedido = new JLabel("Consultar Pedido");
 		lblConsultarPedido.setHorizontalAlignment(SwingConstants.CENTER);
 		lblConsultarPedido.setFont(new Font("Tahoma", Font.PLAIN, 22));
@@ -194,7 +195,7 @@ public class PanelPedido extends JPanel {
 		gbc_lblConsultarPedido.gridx = 0;
 		gbc_lblConsultarPedido.gridy = 1;
 		panelCrearPedido.add(lblConsultarPedido, gbc_lblConsultarPedido);
-		
+
 		JLabel lblNombreCliente = new JLabel("Cliente");
 		lblNombreCliente.setHorizontalAlignment(SwingConstants.CENTER);
 		GridBagConstraints gbc_lblNombreCliente = new GridBagConstraints();
@@ -203,7 +204,7 @@ public class PanelPedido extends JPanel {
 		gbc_lblNombreCliente.gridx = 0;
 		gbc_lblNombreCliente.gridy = 2;
 		panelCrearPedido.add(lblNombreCliente, gbc_lblNombreCliente);
-		
+
 		comboClientes = new JComboBox();
 		GridBagConstraints gbc_comboClientes = new GridBagConstraints();
 		gbc_comboClientes.gridwidth = 2;
@@ -212,7 +213,7 @@ public class PanelPedido extends JPanel {
 		gbc_comboClientes.gridx = 1;
 		gbc_comboClientes.gridy = 2;
 		panelCrearPedido.add(comboClientes, gbc_comboClientes);
-		
+
 		JLabel lblPedido = new JLabel("Pedidos");
 		lblPedido.setHorizontalAlignment(SwingConstants.CENTER);
 		GridBagConstraints gbc_lblPedido = new GridBagConstraints();
@@ -221,7 +222,7 @@ public class PanelPedido extends JPanel {
 		gbc_lblPedido.gridx = 0;
 		gbc_lblPedido.gridy = 4;
 		panelCrearPedido.add(lblPedido, gbc_lblPedido);
-		
+
 		comboPedidos = new JComboBox();
 		comboPedidos.setEnabled(false);
 		GridBagConstraints gbc_comboPedidos = new GridBagConstraints();
@@ -231,7 +232,7 @@ public class PanelPedido extends JPanel {
 		gbc_comboPedidos.gridx = 1;
 		gbc_comboPedidos.gridy = 4;
 		panelCrearPedido.add(comboPedidos, gbc_comboPedidos);
-		
+
 		btnVer = new JButton("VER PEDIDO DEL CLIENTE");
 		GridBagConstraints gbc_btnVer = new GridBagConstraints();
 		gbc_btnVer.gridwidth = 2;
@@ -240,7 +241,7 @@ public class PanelPedido extends JPanel {
 		gbc_btnVer.gridx = 1;
 		gbc_btnVer.gridy = 5;
 		panelCrearPedido.add(btnVer, gbc_btnVer);
-		
+
 		txtMensaje = new JTextField();
 		txtMensaje.setEditable(false);
 		GridBagConstraints gbc_txtMensaje = new GridBagConstraints();
@@ -253,59 +254,41 @@ public class PanelPedido extends JPanel {
 
 	}
 
-
-
 	public JComboBox getComboPedidos() {
 		return comboPedidos;
 	}
-
-
 
 	public JComboBox getComboClientes() {
 		return comboClientes;
 	}
 
-	
 	public JButton getBtnVer() {
 		return btnVer;
 	}
-
-
 
 	public JButton getBtnDelete() {
 		return btnDelete;
 	}
 
-
-
 	public JTextField getTxtNumeroPedido() {
 		return txtNumeroPedido;
 	}
-
 
 	public JComboBox getComboClientesCrear() {
 		return comboClientesCrear;
 	}
 
-
-
 	public JTextField getTxtMensaje() {
 		return txtMensaje;
 	}
-
-
 
 	public JButton getBtnNuevoPedido() {
 		return btnNuevoPedido;
 	}
 
-
-
 	public JButton getBtnEncargar() {
 		return btnEncargar;
 	}
-
-
 
 	public void addPanelTabla(PanelTabla panel) {
 		panelTabla = new JPanel();
@@ -323,14 +306,12 @@ public class PanelPedido extends JPanel {
 		panelTabla.add(panelTabla_1);
 	}
 
-
-
 	public JButton getBtnAdd() {
 		return btnAdd;
 	}
 
-	public JButton getBtnCheck() {
-		return btnCheck;
+	public JButton getBtnCancelar() {
+		return btnCancelar;
 	}
 
 	public JComboBox getComboArticulos() {
@@ -340,6 +321,5 @@ public class PanelPedido extends JPanel {
 	public JPanel getPanelTabla() {
 		return panelTabla;
 	}
-
 
 }

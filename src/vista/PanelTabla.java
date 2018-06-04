@@ -1,27 +1,17 @@
 package vista;
 
-import java.awt.Dimension;
-
 import javax.swing.JPanel;
 import javax.swing.JScrollPane;
 import javax.swing.JTable;
 import javax.swing.table.DefaultTableModel;
 
-import modelo.Articulo;
-
 import java.awt.GridBagLayout;
 import java.awt.GridBagConstraints;
-
-import javax.swing.JButton;
-import javax.swing.JComboBox;
-
-import java.awt.Insets;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
-import javax.swing.SwingConstants;
-import java.awt.Component;
-import javax.swing.JLabel;
-
+/**
+ * 
+ * @author fp-hermoso
+ *
+ */
 public class PanelTabla extends JPanel {
 
 	private JTable tabla;
@@ -60,7 +50,5 @@ public class PanelTabla extends JPanel {
 		scrollPane = new JScrollPane(tabla);
 		add(scrollPane, gbc_scrollPane);
 
-
 	}
-
 }
